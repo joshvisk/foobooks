@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL', 'http://foobooks.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+		// Debugbar Service Prider
+		Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -193,6 +195,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+		'Debugbar'	=> Barryvdh\Debugbar\Facade::class,
+		'Random'    => 'Rych\Random\Random',
+
 
     ],
 
