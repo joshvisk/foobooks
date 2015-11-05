@@ -4,6 +4,7 @@
     Show book
 @stop
 
+
 {{--
 This `head` section will be yielded right before the closing </head> tag.
 Use it to add specific things that *this* View needs in the head,
@@ -13,13 +14,18 @@ such as a page specific styesheets.
     <link href="/css/books/show.css" type='text/css' rel='stylesheet'>
 @stop
 
+
+
 @section('content')
-    @if(isset($title))
-        <h1>Show book: {{ $title }}</h1>
+
+    @if(!isset($title))
+        You have not specified a book
     @else
-        <h1>No book chosen</h1>
+        <h1>Show book: {{ $title }}</h1>
     @endif
+    
 @stop
+
 
 {{--
 This `body` section will be yielded right before the closing </body> tag.
