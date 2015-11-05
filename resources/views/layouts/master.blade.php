@@ -46,8 +46,8 @@
 
     <footer>
         &copy; {{ date('Y') }} &nbsp;&nbsp;
-        <a href='https://github.com/susanBuck/foobooks' class='fa fa-github' target='_blank'> View on Github</a> &nbsp;&nbsp;
-        <a href='http://foobooks.dwa15-practice.biz/' class='fa fa-link' target='_blank'> View Live</a>
+        <a href='https://github.com/joshvisk/foobooks' class='fa fa-github' target='_blank'> View on Github</a> &nbsp;&nbsp;
+        <a href='http://foobooks.eggheadbrew.com/' class='fa fa-link' target='_blank'> View Live</a>
     </footer>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
