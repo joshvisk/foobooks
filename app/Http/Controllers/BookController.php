@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request; 
 
 class BookController extends Controller {
 
@@ -40,7 +41,19 @@ class BookController extends Controller {
     /**
      * Responds to requests to POST /books/create
      */
-    public function postCreate() {
-        return 'Processed the creation of a new book: ' . $_POST['title'];
-    }
+		public function postCreate(Request $request) {
+	
+			// Validate the request data
+			$this->validate($request, [
+					'title' => 'required|min:3',
+			]);
+	
+			// If the code makes it here, you can assume the validation passed
+			$title = $request->input('title');
+	
+			// Code would go here to add the book to the database
+	
+			// Then you'd give the user some sort of confirmation:
+			return 'Process adding new book: '.$title;
+		}
 }

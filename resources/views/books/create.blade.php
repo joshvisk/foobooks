@@ -14,11 +14,19 @@ such as a page specific styesheets.
 @stop
 
 @section('content')
-    <form method="POST" action="/books/create">
-    {{ csrf_field() }}
-    <input type="text" name="title">
-    <input type="submit">
-    </form>
+	@if(count($errors) > 0)
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+  @endif
+  
+  <form method='POST' action='/books/create'>
+      <input type='hidden' name='_token' value='{{ csrf_token() }}'>
+      <input type='text' name='title'>
+      <input type='submit' value='Submit'>
+  </form>
 @stop
 
 {{--
