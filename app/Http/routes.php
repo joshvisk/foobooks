@@ -9,20 +9,33 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-// Reminder: 5 Route methods are: get, post, put, delete, or all
-Route::get('/', function () {
-    return view('index');
-});
-# Explicit routes for Books
+# Reminder: 5 Route methods are: get, post, put, delete, or all
+/*----------------------------------------------------
+/books
+-----------------------------------------------------*/
+Route::get('/', 'BookController@getIndex');
 Route::get('/books', 'BookController@getIndex');
 Route::get('/books/show/{title?}', 'BookController@getShow');
 Route::get('/books/create', 'BookController@getCreate');
 Route::post('/books/create', 'BookController@postCreate');
+Route::get('/books/edit/{id?}', 'BookController@getEdit');
+Route::post('/books/edit', 'BookController@postEdit');
 # Alternative to the above, using implicit Controller routing
 //Route::controller('/books','BookController');
+/*----------------------------------------------------
+/practice
+-----------------------------------------------------*/
 Route::controller('/practice','PracticeController');
+/*----------------------------------------------------
+Debugging/Local/Misc
+-----------------------------------------------------*/
 if(App::environment('local')) {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('/drop', function() {
+        DB::statement('DROP database foobooks');
+        DB::statement('CREATE database foobooks');
+        return 'Dropped foobooks; created foobooks.';
+    });
 };
 Route::get('/debug', function() {
     echo '<pre>';

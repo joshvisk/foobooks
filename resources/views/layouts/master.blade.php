@@ -23,6 +23,12 @@
 </head>
 <body>
 
+    @if(\Session::has('flash_message'))
+        <div class='flash_message'>
+            {{ \Session::get('flash_message') }}
+        </div>
+    @endif
+
     <header>
         <a href='/'>
         <img
@@ -34,8 +40,15 @@
 
     <nav>
         <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/books/create'>Add a book</a></li>
+            @if(Auth::check())
+                <li><a href='/'>Home</a></li>
+                <li><a href='/books/create'>Add a book</a></li>
+                <li><a href='/logout'>Log out</a></li>
+            @else
+                <li><a href='/'>Home</a></li>
+                <li><a href='/login'>Log in</a></li>
+                <li><a href='/register'>Register</a></li>
+            @endif
         </ul>
     </nav>
 
@@ -46,12 +59,13 @@
 
     <footer>
         &copy; {{ date('Y') }} &nbsp;&nbsp;
-        <a href='https://github.com/joshvisk/foobooks' class='fa fa-github' target='_blank'> View on Github</a> &nbsp;&nbsp;
-        <a href='http://foobooks.eggheadbrew.com/' class='fa fa-link' target='_blank'> View Live</a>
+        <a href='https://github.com/susanBuck/foobooks' class='fa fa-github' target='_blank'> View on Github</a> &nbsp;&nbsp;
+        <a href='http://foobooks.dwa15-practice.biz/' class='fa fa-link' target='_blank'> View Live</a>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 
     {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
     @yield('body')
